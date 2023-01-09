@@ -6,6 +6,8 @@ const express = require("express");
 const config = require("config");
 // подкл. mongoDB ч/з mongoose для базы данных
 const mongoose = require("mongoose");
+// от ошибки устаревшего кода
+mongoose.set("strictQuery", false);
 
 // server,резулт.раб.fn express
 const app = express();
@@ -18,7 +20,16 @@ async function start() {
   // всё верно
   try {
     // await для ожидан. промиса. Вызов mongoose.мтд.connect. 1ый парам url адрес с БД(из config), 2ой парам. набор опций
-    await mongoose.connect(config.get("mongoUri"), {});
+    await mongoose.connect(config.get("mongoUri"), {
+      // парам из видео для успешн.connect
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      // useCreateIndex: true,
+    });
+    // вызов сервера с паредачей порта и fn колбэк (listen - слушатель)
+    app.listen(PORT, () =>
+      console.log(`Сервер начал прослушивание запросов на порту ${PORT}.....`)
+    );
   } catch (error) {
     // отраб.ошб.
     console.log("Server Error", error.message);
@@ -26,8 +37,4 @@ async function start() {
     process.exit(1);
   }
 }
-
-// вызов сервера с паредачей порта и fn колбэк (listen - слушатель)
-app.listen(PORT, () =>
-  console.log(`Сервер начал прослушивание запросов на порту ${PORT}.....`)
-);
+start();
