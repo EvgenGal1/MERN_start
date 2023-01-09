@@ -1,6 +1,6 @@
 {
   "port": 3005,
-  "mongoUri": "mongodb+srv://EvGenGal:<password>@clustereg.9gbar5k.mongodb.net/app?retryWrites=true&w=majority",
+  "mongoUri": "mongodb+srv://EvGenGal:<password>@clustereg.9gbar5k.mongodb.net/?retryWrites=true&w=majority",
   "comment_web_mongoUri": "mongodb+srv://EvGenGal:<password>@clustereg.9gbar5k.mongodb.net/app?retryWrites=true&w=majority",
   "comment_vscode_mongoUri": "mongodb+srv://EvGenGal:<password>@clustereg.9gbar5k.mongodb.net/test"
 }
