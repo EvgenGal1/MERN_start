@@ -10,6 +10,7 @@ const { validationResult } = require("express-validator");
 
 // обьяв.кл.(для компановки) с неск.fn
 class authController {
+  // ^ Сделать  проверку по UlbiTV
   async register(req, res) {
     // базов.логика с обраб.ошб.
     try {
@@ -69,6 +70,7 @@ class authController {
     }
   }
 
+  // ^ Прописать логику для login ВМ + UlbiTV
   async login(req, res) {
     try {
       res.json("login");
@@ -78,11 +80,14 @@ class authController {
   async getUsers(req, res) {
     try {
       // кастыль для созд. ролей в БД
-      // !!! Ошб. UlbiTV
-      const userRole = new Role();
+      // !!! Ошб. UlbiTV при подкл. к MongoDB (откл.в России)
+      // ! Ошибка сервера: неверная аутентификация: не удалось выполнить аутентификацию.
+      /* // ! Не удалось отправить запрос Ошибка: подключение ECONNREFUSED 127.0.0.1:3005 */
+      // const userRole = new Role();
       // const adminRole = new Role({ value: "ADMIN" });
       // await userRole.save();
       // await adminRole.save();
+      // ^ Раб в get Postman
       res.json("getUsers 33333");
     } catch (error) {}
   }

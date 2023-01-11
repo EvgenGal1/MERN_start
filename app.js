@@ -43,7 +43,7 @@ async function start() {
     });
   } catch (error) {
     // отраб.ошб.
-    console.log("Server Error", error.message);
+    console.log("Ошибка сервера", error.message);
     // выход ч/з глоб.проц.мтд .exit
     process.exit(1);
   }
